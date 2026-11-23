@@ -270,7 +270,7 @@ class UI:
         )
         tela.blit(
             self._render_texto_ajustado("DEVORADOR DAS PROFUNDEZAS • COLMEIA PROFANA • SENTINELA ESMERALDA • ARAUTO DA EXTINÇÃO • IRMÃS DO CAOS • LAMENTO DO VAZIO", 
-            "pequena", (185, 205, 228), escala=0.82),
+            "pequena", (185, 205, 228), escala=0.55),
             (card_obj.x + 14, card_obj.y + 49),
         )
 
