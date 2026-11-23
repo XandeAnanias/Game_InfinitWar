@@ -4,8 +4,7 @@ import pygame
 import random
 import math
 import threading
-from config import SPRITES_CONFIG, SONS_CONFIG, MAX_VOLUME_GLOBAL
-
+from config import SPRITES_CONFIG, SONS_CONFIG, MAX_VOLUME_GLOBAL, AUDIO_DIR
 
 class SomNulo:
     """Evita crashes caso algum arquivo .wav seja removido."""
@@ -35,45 +34,47 @@ class AssetManager:
     }
 
     SONS_EXTRAS_PADRAO = {
-        "boss_final_campo":    "assets/audio/boss_final_campo.wav",
-        "boss_final_frota":    "assets/audio/boss_final_frota.wav",
-        "boss_final_carregar": "assets/audio/boss_final_carregar.wav",
-        "boss_final_laser":    "assets/audio/boss_final_laser.wav",
-        "boss_alerta":         "assets/audio/boss_alerta.wav",
-        "lula_dash":           "assets/audio/lula_dash.wav",
-        "lula_tinta":          "assets/audio/lula_tinta.wav",
-        "colmeia_enxame":      "assets/audio/colmeia_enxame.wav",
-        "gemeos_arco":         "assets/audio/gemeos_arco.wav",
-        "buraco_negro_pulso":  "assets/audio/buraco_negro_pulso.wav",
-        "buraco_negro_feixe":  "assets/audio/buraco_negro_feixe.wav",
-        "powerup":             "assets/audio/powerup.wav",
-        "cura":                "assets/audio/cura.wav",
+        "boss_final_campo":    os.path.join(AUDIO_DIR, "boss_final_campo.wav"),
+        "boss_final_frota":    os.path.join(AUDIO_DIR, "boss_final_frota.wav"),
+        "boss_final_carregar": os.path.join(AUDIO_DIR, "boss_final_carregar.wav"),
+        "boss_final_laser":    os.path.join(AUDIO_DIR, "boss_final_laser.wav"),
+        "boss_alerta":         os.path.join(AUDIO_DIR, "boss_alerta.wav"),
+        "lula_dash":           os.path.join(AUDIO_DIR, "lula_dash.wav"),
+        "lula_tinta":          os.path.join(AUDIO_DIR, "lula_tinta.wav"),
+        "colmeia_enxame":      os.path.join(AUDIO_DIR, "colmeia_enxame.wav"),
+        "gemeos_arco":         os.path.join(AUDIO_DIR, "gemeos_arco.wav"),
+        "buraco_negro_pulso":  os.path.join(AUDIO_DIR, "buraco_negro_pulso.wav"),
+        "buraco_negro_feixe":  os.path.join(AUDIO_DIR, "buraco_negro_feixe.wav"),
+        "powerup":             os.path.join(AUDIO_DIR, "powerup.wav"),
+        "cura":                os.path.join(AUDIO_DIR, "cura.wav"),
     }
 
     MUSICAS_PADRAO = {
         "menu": [
-            "assets/audio/musica_menu.ogg",
-            "assets/audio/musica_menu.mid",
+            os.path.join(AUDIO_DIR, "musica_menu.ogg"),
+            os.path.join(AUDIO_DIR, "musica_menu.mp3"),
+            os.path.join(AUDIO_DIR, "musica_menu.mid"),
         ],
         "fase": [
-            "assets/audio/musica_fase.ogg",
-            "assets/audio/musica_fase.mp3",
+            os.path.join(AUDIO_DIR, "musica_fase.ogg"),
+            os.path.join(AUDIO_DIR, "musica_fase.mp3"),
+            os.path.join(AUDIO_DIR, "musica_fase.wav"),
         ],
         "boss_medio": [
-            "assets/audio/musica_boss.ogg",
-            "assets/audio/musica_boss.mp3",
+            os.path.join(AUDIO_DIR, "musica_boss.ogg"),
+            os.path.join(AUDIO_DIR, "musica_boss.mp3"),
         ],
         "boss_final": [
-            "assets/audio/musica_boss_final.ogg",
-            "assets/audio/musica_boss_final.mp3",
-            "assets/audio/musica_boss.ogg",
-            "assets/audio/musica_boss.mp3",
+            os.path.join(AUDIO_DIR, "musica_boss_final.ogg"),
+            os.path.join(AUDIO_DIR, "musica_boss_final.mp3"),
+            os.path.join(AUDIO_DIR, "musica_boss.ogg"),
+            os.path.join(AUDIO_DIR, "musica_boss.mp3"),
         ],
         "boss_final_furia": [
-            "assets/audio/musica_boss_final_furia.ogg",
-            "assets/audio/musica_boss_final_furia.mp3",
-            "assets/audio/musica_boss_final.ogg",
-            "assets/audio/musica_boss_final.mp3",
+            os.path.join(AUDIO_DIR, "musica_boss_final_furia.ogg"),
+            os.path.join(AUDIO_DIR, "musica_boss_final_furia.mp3"),
+            os.path.join(AUDIO_DIR, "musica_boss_final.ogg"),
+            os.path.join(AUDIO_DIR, "musica_boss_final.mp3"),
         ],
     }
 
@@ -165,7 +166,7 @@ class AssetManager:
     def _mapear_musicas(self):
         """Localiza todos os arquivos de trilha sonora uma única vez ao abrir o jogo."""
         chaves = ("menu", "fase", "boss_medio", "boss_final", "boss_final_furia")
-        pasta_audio = os.path.join("assets", "audio")
+        pasta_audio = AUDIO_DIR
         arquivos_pasta = sorted(os.listdir(pasta_audio)) if os.path.isdir(pasta_audio) else []
         extensoes_aceitas = (".ogg", ".mp3", ".wav", ".mid")
 
